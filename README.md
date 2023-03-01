@@ -1,3 +1,51 @@
+### fork后根据[Cj佬](https://github.com/CjangCjengh)和[R佬](https://github.com/innnky)指点修改过的地方，解决（忽略掉）了一些报错
+
+1. [data_utils.py](data_utils.py)
+
+```diff
+    batches = []
+    for i in range(len(self.buckets)):
+        bucket = self.buckets[i]
+        len_bucket = len(bucket)
++       if len_bucket == 0:
++           continue
+        ids_bucket = indices[i]
+        num_samples_bucket = self.num_samples_per_bucket[i]
+```
+
+2. [train.py](train.py)
+
+```diff
+-   net_g = DDP(net_g, device_ids=[rank])
++   net_g = DDP(net_g, device_ids=[rank], find_unused_parameters=True)
+-   net_d = DDP(net_d, device_ids=[rank])
++   net_d = DDP(net_d, device_ids=[rank], find_unused_parameters=True)
+```
+
+### 其他
+
+1. [preprocess.py](preprocess.py)
+
+```diff
+-   parser.add_argument("--text_cleaners", nargs="+", default=["english_cleaners2"])
++   parser.add_argument("--text_cleaners", nargs="+", default=["chinese_cleaners"])
+```
+
+2. [train_ms.py](train_ms.py)
+
+```diff
+-   old_g=os.path.join(hps.model_dir, "G_{}.pth".format(global_step-2000))
++   old_g=os.path.join(hps.model_dir, "G_{}.pth".format(global_step-10000))
+-   old_d=os.path.join(hps.model_dir, "D_{}.pth".format(global_step-2000))
++   old_d=os.path.join(hps.model_dir, "D_{}.pth".format(global_step-10000))
+```
+
+3. [utils.py](utils.py)
+
+```diff
+-   model_dir = os.path.join("../drive/MyDrive", args.model)
++   model_dir = os.path.join("./logs", args.model)
+```
 # How to use
 (Suggestion) Python == 3.7
 ## Clone this repository
