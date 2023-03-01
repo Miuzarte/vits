@@ -46,6 +46,15 @@
 -   model_dir = os.path.join("../drive/MyDrive", args.model)
 +   model_dir = os.path.join("./logs", args.model)
 ```
+
+#### 一些备注
+
+已知librosa需要使用版本0.8.0
+
+#### 运行历史
+
+1. 九天人工智能平台 V100 32G cuda11.0，python3.8，只安装requirement.txt上的环境
+
 # How to use
 (Suggestion) Python == 3.7
 ## Clone this repository
