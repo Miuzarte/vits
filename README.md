@@ -47,6 +47,17 @@
 +   model_dir = os.path.join("./logs", args.model)
 ```
 
+4. [requirements.txt](requirements.txt)
+
+```diff
+-   tensorboard==2.3.0
++   tensorboard
+-   torch==1.6.0
++   torch
+-   torchvision==0.7.0
++   tensorboard
+```
+
 #### 一些备注
 
 已知librosa需要使用版本0.8.0
