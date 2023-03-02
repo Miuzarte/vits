@@ -55,7 +55,7 @@
 -   torch==1.6.0
 +   torch
 -   torchvision==0.7.0
-+   tensorboard
++   torchvision
 ```
 
 #### 一些备注
