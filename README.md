@@ -31,23 +31,32 @@
 +   parser.add_argument("--text_cleaners", nargs="+", default=["chinese_cleaners"])
 ```
 
-2. [train_ms.py](train_ms.py)
+2. [train.py](train.py)
 
 ```diff
 -   old_g=os.path.join(hps.model_dir, "G_{}.pth".format(global_step-2000))
-+   old_g=os.path.join(hps.model_dir, "G_{}.pth".format(global_step-10000))
++   old_g=os.path.join(hps.model_dir, "G_{}.pth".format(global_step-100000))
 -   old_d=os.path.join(hps.model_dir, "D_{}.pth".format(global_step-2000))
-+   old_d=os.path.join(hps.model_dir, "D_{}.pth".format(global_step-10000))
++   old_d=os.path.join(hps.model_dir, "D_{}.pth".format(global_step-100000))
 ```
 
-3. [utils.py](utils.py)
+3. [train_ms.py](train_ms.py)
+
+```diff
+-   old_g=os.path.join(hps.model_dir, "G_{}.pth".format(global_step-2000))
++   old_g=os.path.join(hps.model_dir, "G_{}.pth".format(global_step-100000))
+-   old_d=os.path.join(hps.model_dir, "D_{}.pth".format(global_step-2000))
++   old_d=os.path.join(hps.model_dir, "D_{}.pth".format(global_step-100000))
+```
+
+4. [utils.py](utils.py)
 
 ```diff
 -   model_dir = os.path.join("../drive/MyDrive", args.model)
 +   model_dir = os.path.join("./logs", args.model)
 ```
 
-4. [requirements.txt](requirements.txt)
+5. [requirements.txt](requirements.txt)
 
 ```diff
 -   tensorboard==2.3.0
